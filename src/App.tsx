@@ -11,9 +11,26 @@ function App() {
   const [yes, setYes] = useState(false)
   const [noClicks, setNoClicks] = useState(0)
 
+  const dramaticPhrases = [
+    '¿De verdad me rechazas así? 💔',
+    '¡Pensé que me amabas! 😢',
+    'Mi corazón se acaba de romper en mil pedazos... 💔😭',
+    '¿Es que no valgo nada para ti? 😞',
+    'Esto es peor que una película de drama coreano... 📺😭',
+    'He visto menos crueldad en una telenovela mexicana... 🎭',
+    'Ni siquiera Titanic fue tan triste como esto... 🚢💔',
+    '¿Así es como termina nuestra historia? 😢',
+    'Debo estar en un episodio de Black Mirror... 😭',
+    '¡Eres el Darth Vader de mi corazón! 🖤'
+  ]
+
   const getNoGif = () => {
     const gifs = [mochalove, mochacrying, mochadrama, mochaheartbreak, mochapampering]
     return gifs[noClicks % gifs.length]
+  }
+
+  const getDramaticPhrase = () => {
+    return dramaticPhrases[noClicks % dramaticPhrases.length]
   }
 
   const handleNoClick = () => {
@@ -28,6 +45,11 @@ function App() {
       <h1 className='text-5xl font-bold text-white drop-shadow-lg mb-4 text-center'>
         {yes ? '¡Te amo! 😘' : noClicks > 0 ? '¿Por qué me hiciste esto? 😭' : 'Vengo a hacerte una sencilla pregunta'}
       </h1>
+      {noClicks > 0 && (
+        <p className='text-2xl font-bold text-white drop-shadow-lg mb-6 text-center animate-bounce'>
+          {getDramaticPhrase()}
+        </p>
+      )}
       <div className="bg-white rounded-3xl shadow-2xl p-8 backdrop-blur-sm bg-opacity-95">
         <h3 className='text-3xl font-bold text-pink-600 mb-8 text-center'>¿Me amas? 💕</h3>
         <div className='flex gap-6 justify-center relative min-h-16'>
